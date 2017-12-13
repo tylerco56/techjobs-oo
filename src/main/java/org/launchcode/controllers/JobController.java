@@ -88,8 +88,9 @@ public class JobController {
             return "redirect:?id=" + id;
         }
 
+        model.addAttribute(errors);
 
-        return "job/new-job";
+        return "new-job";
 
     }
 }
