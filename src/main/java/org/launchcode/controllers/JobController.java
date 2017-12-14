@@ -48,17 +48,43 @@ public class JobController {
         if (!errors.hasErrors()){
 
             Job job = new Job();
+            JobData jobData = JobData.getInstance();
 
             job.setName(jobForm.getName());
 
-            for (Employer employer : jobForm.getEmployers()){
+            Employer employer = jobData.getEmployers().findById(jobForm.getEmployerId());
+            job.setEmployer(employer);
+
+            Location location = jobData.getLocations().findById(jobForm.getLocationId());
+            job.setLocation(location);
+
+            CoreCompetency coreCompetency = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetenciesId());
+            job.setCoreCompetency(coreCompetency);
+
+            PositionType positionType = jobData.getPositionTypes().findById(jobForm.getPositionTypesId());
+            job.setPositionType(positionType);
+
+            jobData.add(job);
+            int id = job.getId();
+            return "redirect:?id=" + id;
+        }
+
+        model.addAttribute(errors);
+
+        return "new-job";
+
+    }
+}
+
+/* for (Employer employer : jobForm.getEmployers()){
 
                 if (employer.getId() == jobForm.getEmployerId()){
                     job.setEmployer(employer);
                     break;
                 }
-            }
+            } */
 
+            /*
             for (Location location : jobForm.getLocations()){
 
                 if (location.getId() == jobForm.getLocationId()){
@@ -67,13 +93,14 @@ public class JobController {
                 }
             }
 
-            for (CoreCompetency coreCompetency : jobForm.getCoreCompetencies()){
+                        for (CoreCompetency coreCompetency : jobForm.getCoreCompetencies()){
 
                 if (coreCompetency.getId() == jobForm.getCoreCompetenciesId()){
                     job.setCoreCompetency(coreCompetency);
                     break;
                 }
             }
+
 
             for (PositionType positionType : jobForm.getPositionTypes()){
 
@@ -83,13 +110,4 @@ public class JobController {
                 }
             }
 
-            jobData.add(job);
-            int id = job.getId();
-            return "redirect:?id=" + id;
-        }
-
-
-        return "job/new-job";
-
-    }
-}
+            */
