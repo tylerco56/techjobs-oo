@@ -76,38 +76,3 @@ public class JobController {
     }
 }
 
-/* for (Employer employer : jobForm.getEmployers()){
-
-                if (employer.getId() == jobForm.getEmployerId()){
-                    job.setEmployer(employer);
-                    break;
-                }
-            } */
-
-            /*
-            for (Location location : jobForm.getLocations()){
-
-                if (location.getId() == jobForm.getLocationId()){
-                    job.setLocation(location);
-                    break;
-                }
-            }
-
-                        for (CoreCompetency coreCompetency : jobForm.getCoreCompetencies()){
-
-                if (coreCompetency.getId() == jobForm.getCoreCompetenciesId()){
-                    job.setCoreCompetency(coreCompetency);
-                    break;
-                }
-            }
-
-
-            for (PositionType positionType : jobForm.getPositionTypes()){
-
-                if (positionType.getId() == jobForm.getPositionTypesId()){
-                    job.setPositionType(positionType);
-                    break;
-                }
-            }
-
-            */
